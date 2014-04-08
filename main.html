@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>GridHub</title>
+	<script src = "./gridWorking.js"> </script>
+	<script src = "./library/jquery.js"></script>
+</head>
+<body>
+	<h1> GridHub </h1>
+	<div id="gridBody"></div>
+<!-- 	<p> test </p> -->
+	<script> createGrid(); </script>
+	<br>
+	
+	<input type="button" value="Save" onclick="save()"> </input>
+<!-- 	<br>
+	<select id="savedFiles">
+	</select> -->
+
+	<input type="button" value="Load" onclick="load()"></input> 
+	
+	<input type="button" value="Clear" onclick="cleargrid()"></input>
+	<br>
+	<input type="button" value="Send e-mail" onclick="sendMail(); return false"></input>
+	
+</body>
+</html>
