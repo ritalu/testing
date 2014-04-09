@@ -101,7 +101,7 @@ function colorUpdate(id, array)
 function sendMail() {
     var link = "mailto:Your email here."
              + "?cc="
-             + "&subject=" + escape("Commit Schedule!")
+             + "&subject=" + escape("Commit Schedule")
              + "&body=" + escape(generateDates(boxes));
 
     window.location.href = link;
