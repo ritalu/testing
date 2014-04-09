@@ -13,7 +13,7 @@ h1 {
     text-align: center;
     font-family: "Lato";
     font-size: 60px;
-    color: white; /* could try various box colors: 44A340 */
+    color: white; /* Could try various box colors: 44A340 */
     font-weight: lighter;
 }
 input[type=button] {
