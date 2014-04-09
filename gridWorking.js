@@ -76,7 +76,7 @@ function colorUpdate(id, array)
     {
       case 0: 
       box.setAttribute("style", "fill: rgb(238, 238, 238);")
-
+  
   break;
       case 1:
         box.setAttribute("style", "fill: rgb(214, 230, 133);");
@@ -99,10 +99,10 @@ function colorUpdate(id, array)
 }
 
 function sendMail() {
-    var link = "mailto:provided-email@example.com"
+    var link = "mailto:Your email here."
              + "?cc="
              + "&subject=" + escape("Commit Schedule!")
-             + "&body=" + escape("Commit schedule goes here.");
+             + "&body=" + escape(generateDates(boxes));
 
     window.location.href = link;
 }
@@ -139,14 +139,17 @@ function save() {
 
 }
 
-
+/* 
+ * The way it was before, boxes still had the previous numbers in it.
+ * We need to reset boxes, because otherwise upon clicking inside the
+ * previously drawn area, we jump to random colors.
+ */
 function cleargrid() {
-  var clearGrid = Array();
   for (i = 0; i < boxes.length; i++) {
-    clearGrid[i] = 0;
+    boxes[i] = 0;
   }
   for (i = 0; i < boxes.length; i++) {
-    colorUpdate(i, clearGrid);
+    colorUpdate(i, boxes);
   }
 
 }
@@ -253,16 +256,16 @@ function generateDates(array){
     //var dateString = calculateDate(i);
     switch (array[i]) {
       case 1:
-        dates = dates + "Needs " + num1 + " commits on " + calculateDate(i) + "\n";
+        dates = dates + calculateDate(i) + " - " + num1 + " commit" + "\n\n";
       break;
       case 2:
-        dates = dates + "Needs " + num2 + " commits on " + calculateDate(i) + "\n";
+        dates = dates + calculateDate(i) + " - " + num2 + " commits" + "\n\n";
       break;
       case 3:
-        dates = dates + "Needs " + num3 + " commits on " + calculateDate(i) + "\n";
+        dates = dates + calculateDate(i) + " - " + num3 + " commits" + "\n\n";
       break;
       case 4: 
-        dates = dates + "Needs " + num4 + " commits on " + calculateDate(i) + "\n";
+        dates = dates + calculateDate(i) + " - " + num4 + " commits" + "\n\n";
       break
      
     }
@@ -289,7 +292,7 @@ var presentMonth = d.getMonth();;
 var presentYear = d.getFullYear();
 
 ///////////
-// INPUT //
+// INPUT //c
 ///////////
 
 var inputRow = 0; // between 0 and 6 inclusive
