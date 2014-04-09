@@ -1,7 +1,7 @@
 /* color scheme is temporary, definitely can be changed */
 
 body {
-	background-color:#660066;
+	background-color:#0AC5F4;
 	font-size: 15px;
 	font-family: "Verdana";
 	color: white;
@@ -19,7 +19,7 @@ h1 {
 input[type=button] {
   margin-bottom:5px;
   padding:3px;
-  background-color: #660066; /*color options: 141826, 0AC5F4, 660066 */
+  background-color: #0AC5F4; /*color options: 141826, 0AC5F4, 660066 */
   border: 1px solid #ffffff;
   color:#ffffff;
   text-decoration:none;
