@@ -98,6 +98,14 @@ function colorUpdate(id, array)
 
 }
 
+
+function bossMode() {
+  for (i = 0; i < boxes.length; i++) {
+    boxes[i] = 4;
+    colorUpdate(i, boxes);
+  }
+}
+
 function sendMail() {
     var link = "mailto:Your email here."
              + "?cc="
