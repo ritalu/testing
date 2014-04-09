@@ -219,6 +219,37 @@ function load() {
   save2[192] = 3;
 
 
+
+  save2[16] = 4;
+  save2[17] = 4;
+  save2[18] = 4;
+  save2[22] = 4;
+  save2[28] = 4;
+  save2[35] = 4;
+  save2[42] = 4;
+  save2[50] = 4;
+  save2[58] = 4;
+  save2[59] = 4;
+  save2[60] = 4;
+  save2[54] = 4;
+  save2[26] = 4;
+  save2[34] = 4;
+  save2[41] = 4;
+  save2[48] = 4;
+  save2[24] = 4;
+  save2[31] = 4;
+  save2[45] = 4;
+  save2[52] = 4;
+  save2[37] = 4;
+  save2[39] = 4;
+  save2[23] = 2;
+  save2[30] = 2;
+  save2[29] = 2;
+  save2[36] = 2;
+  save2[43] = 2;
+  save2[44] = 2;
+  save2[51] = 2;
+
   generateDates(save2);
 
   // choose which file to load here
