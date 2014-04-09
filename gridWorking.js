@@ -229,7 +229,7 @@ function load() {
   save2[192] = 3;
 
 
-
+  // Pokeball
   save2[16] = 4;
   save2[17] = 4;
   save2[18] = 4;
@@ -260,6 +260,67 @@ function load() {
   save2[44] = 2;
   save2[51] = 2;
 
+  // Mario
+  save2[255] = 4;
+  save2[256] = 4;
+  save2[257] = 4;
+  save2[260] = 3;
+  save2[261] = 4;
+  save2[262] = 1;
+  save2[263] = 1;
+  save2[264] = 4;
+  save2[266] = 3;
+  save2[267] = 3;
+  save2[268] = 4;
+  save2[269] = 4;
+  save2[270] = 4;
+  save2[271] = 1;
+  save2[272] = 1;
+  save2[273] = 3;
+  save2[274] = 3;
+  save2[275] = 4;
+  save2[276] = 1;
+  save2[277] = 4;
+  save2[278] = 1;
+  save2[279] = 1;
+  save2[280] = 3;
+  save2[281] = 3;
+  save2[282] = 1;
+  save2[283] = 1;
+  save2[284] = 1;
+  save2[285] = 1;
+  save2[286] = 1;
+  save2[287] = 3;
+  save2[288] = 3;
+  save2[289] = 1;
+  save2[290] = 1;
+  save2[291] = 1;
+  save2[292] = 1;
+  save2[293] = 1;
+  save2[294] = 3;
+  save2[295] = 3;
+  save2[296] = 4;
+  save2[297] = 4;
+  save2[298] = 1;
+  save2[299] = 4;
+  save2[300] = 1;
+  save2[302] = 3;
+  save2[303] = 1;
+  save2[304] = 1;
+  save2[305] = 4;
+  save2[306] = 4;
+  save2[307] = 1;
+  save2[309] = 3;
+  save2[311] = 1;
+  save2[312] = 1;
+  save2[313] = 4;
+  save2[314] = 1;
+  save2[316] = 3;
+  save2[318] = 1;
+  save2[319] = 1;
+  save2[320] = 4;
+  save2[326] = 1;
+  
   generateDates(save2);
 
   // choose which file to load here
