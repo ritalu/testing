@@ -154,6 +154,16 @@ function cleargrid() {
 
 }
 
+
+
+
+
+// pokeball
+
+
+
+
+
 function load() {
   console.log("loading...");
   //dateToPrettyString(4, 10, 2014);
@@ -262,6 +272,29 @@ function load() {
         console.log("filled " + i + " with color " + boxes[i]);
     }
   }
+
+
+
+
+
+// saved patterns: move this outside the load function later
+// space invader: size 76
+var space_invader = Array();
+
+for (i = 0; i < 76; i++){
+  space_invader[i] = save2[i+119];
+
+}
+
+
+//pokeball:
+
+var pokeball = Array();
+
+for (i = 0; i < 48; i++) {
+  pokeball[i] = save2[i + 14];
+}
+
 }
 
 // generate dates corresponding to pattern, returns a string that we can email to the user
