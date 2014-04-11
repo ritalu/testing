@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>GridHub</title>
+	<script src = "./gridWorking.js"> </script>
+	<script src = "./library/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:Light"> <!-- import google web font -->
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+</head>
+<body>
+	<h1> GRIDHUB </h1>
+	<div id="gridBody"></div>
+<!-- 	<p> test </p> -->
+	<script> createGrid(); </script>
+	<br>
+	
+	<input type="button" value="SAVE" onclick="save()"> </input>
+<!-- 	<br>
+	<select id="savedFiles">
+	</select> -->
+
+	<input type="button" value="LOAD" onclick="load()"></input> 
+	
+	<input type="button" value="CLEAR" onclick="cleargrid()"></input>
+		<input type="button" value="BOSS MODE" onclick="bossMode()"></input>
+	<br>
+	<input type="button" value="COMMIT SCHEDULE" onclick="sendMail(); return false"></input>
+
+
+	
+</body>
+</html>
