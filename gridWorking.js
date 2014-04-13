@@ -162,26 +162,12 @@ function cleargrid() {
 
 }
 
-
-
-
-
-// pokeball
-
-
-
-
-
-function load() {
-  console.log("loading...");
-  //dateToPrettyString(4, 10, 2014);
-  //calculateDate(1);
-
+  // moved this outside of load()
+function loadSample() {
 
   for (i = 0; i < boxes.length; i++){
     save2[i] = 0;
   }
-
   // since I won't have peresisting save done by wednesday, I painstakingly loaded a space invader so that
   // we can show the load function, generateDate() and sample email
   save2[146] = 3;
@@ -329,22 +315,7 @@ function load() {
   save2[320] = 4;
   save2[326] = 1;
   
-  generateDates(save2);
-
-  // choose which file to load here
-  boxes = save2;
-
-
-  for (i = 0; i < boxes.length; i++){
-      colorUpdate(i, boxes);
-      if (boxes[i] != 0){
-        console.log("filled " + i + " with color " + boxes[i]);
-    }
-  }
-
-
-
-
+}
 
 // saved patterns: move this outside the load function later
 // space invader: size 76
@@ -363,6 +334,32 @@ var pokeball = Array();
 for (i = 0; i < 48; i++) {
   pokeball[i] = save2[i + 14];
 }
+
+
+
+
+function load() {
+  console.log("loading...");
+  //dateToPrettyString(4, 10, 2014);
+  //calculateDate(1);
+
+
+
+  loadSample();
+  generateDates(save2);
+
+  // choose which file to load here
+  boxes = save2;
+
+
+  for (i = 0; i < boxes.length; i++){
+      colorUpdate(i, boxes);
+      if (boxes[i] != 0){
+        console.log("filled " + i + " with color " + boxes[i]);
+    }
+  }
+
+
 
 }
 
