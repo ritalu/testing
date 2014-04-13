@@ -1,9 +1,9 @@
-/* color scheme is temporary, definitely can be changed */
+/* color scheme is no longer temporary, and definitely cannot be changed */
 
 body {
-    /*	background-color:#0AC5F4; */
-        background-image:url("mostlegitbackground.jpg");
-        background-repeat:repeat;
+	background-color:#0AC5F4;
+        /* background-image:url("mostlegitbackground.jpg");
+        background-repeat:repeat; "This one's a keeper." - said no one of such a background, ever. */
 	font-size: 15px;
 	font-family: "Verdana";
 	color: white;

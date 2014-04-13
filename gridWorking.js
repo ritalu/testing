@@ -376,26 +376,48 @@ function generateDates(array){
 
   var num1 = 1; 
     // according to empirical data gathered by yours truly, it takes 4 commits to make it to the second shade of green
-  var num2 = 4;
-  var num3 = 8;
-  var num4 = 12;
-
-//onsole.log(calculateDate(355));
-  var i = 0;
+  var num2 = 2;
+  var num3 = 6;
+  var num4 = 8;
+  
+  // Loop to find the first colored box. This will allow users to start drawing their designs right away
+  // instead of having to wait till august if they drew their figure too far to the right.
+  var startingBlock = 0;
   for (i = 0; i < boxes.length; i++) {
+      if (array[i] > 0) {
+	startingBlock = i;
+	break;
+      }
+  }
+  
+  var startDayOfWeek = startingBlock % 7; // 0 = Sunday, 1 = Monday, ... 6 = Saturday
+  var offset = presentDayOfWeek + startDayOfWeek;
+  var today = 0;
+  if (presentDayOfWeek == startDayOfWeek) {
+    today = 7;
+  }
+
+  //console.log(calculateDate(355));
+  var i = 0;
+  for (var i = startingBlock; i < boxes.length; i++) {
     //var dateString = calculateDate(i);
     switch (array[i]) {
       case 1:
-        dates = dates + calculateDate(i) + " - " + num1 + " commit" + "\n\n";
+	// Weird calculation, I know, was playing around with the dates, I'll get around to making this more clear.
+	// Basically i - startingBlock tells us how far from the first block the current block is, and we add
+	// the offset % 7 to retain consistency with the current day of the week. Subtract 7 to start in the current
+	// week, if possible. today keeps track of whether today is the same day of the week as the first box to be
+	// drawn. If this is the case, we jump to the next week (so today's commits don't get in the way).
+        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num1 + " commit" + "\n\n";
       break;
       case 2:
-        dates = dates + calculateDate(i) + " - " + num2 + " commits" + "\n\n";
+        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num2 + " commits" + "\n\n";
       break;
       case 3:
-        dates = dates + calculateDate(i) + " - " + num3 + " commits" + "\n\n";
+        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num3 + " commits" + "\n\n";
       break;
       case 4: 
-        dates = dates + calculateDate(i) + " - " + num4 + " commits" + "\n\n";
+        dates = dates + calculateDate(i-startingBlock + (offset) - 7 + today) + " - " + num4 + " commits" + "\n\n";
       break
      
     }
@@ -445,112 +467,112 @@ inputColumn++; // add 1 to offset incomplete column at the beginning
 
 function calculateDate(number) {
 
-squareNumber = number;
-//console.log("Square #" + squareNumber + " corresponds to: ")
+  squareNumber = number;
+  //console.log("Square #" + squareNumber + " corresponds to: ")
 
-var leap = false;
+  var leap = false;
 
-if (presentYear % 4 == 0){
-  leap = true;
-}
-// maxDays holds maximum amount of days in every month, accounting for leap and non-leap years
-var maxDays = new Array();
-
-if (leap){
-  maxDays[0] = 31;
-  maxDays[1] = 29;
-  maxDays[2] = 31;
-  maxDays[3] = 30;
-  maxDays[4] = 31;
-  maxDays[5] = 30;
-  maxDays[6] = 31;
-  maxDays[7] = 31;
-  maxDays[8] = 30;
-  maxDays[9] = 31;
-  maxDays[10] = 30;
-  maxDays[11] = 31;
-}
-else {
-
-  maxDays[0] = 31;
-  maxDays[1] = 28;
-  maxDays[2] = 31;
-  maxDays[3] = 30;
-  maxDays[4] = 31;
-  maxDays[5] = 30;
-  maxDays[6] = 31;
-  maxDays[7] = 31;
-  maxDays[8] = 30;
-  maxDays[9] = 31;
-  maxDays[10] = 30;
-  maxDays[11] = 31;
-
-}
-
-// calculate number of days out of 365 the present date is
-var presentTotal = 0;
-
-for (j = 0; j < presentMonth; j++){
-  presentTotal = presentTotal + maxDays[j];
-}
-presentTotal = presentTotal + presentDay;
-
-
-// calculate what the sampleTotalth day of the year is
-var startingDate = (presentTotal - presentDayOfWeek + 365 + 6) - (7)*(52);
-
-////////////
-// OUTPUT //
-////////////
-
-var outputDay;
-var outputMonth;
-var outputYear;
-
-///////////////////
-// END OF OUTPUT //
-///////////////////
-
-var outputTotal;
-if (leap) {
-  // outputTotal = (inputColumn * 7 + inputRow + startingDate) % 365;
-  outputTotal = (squareNumber + startingDate) % 365;
-
-}
-else {
-  //outputTotal = (inputColumn * 7 + inputRow + startingDate) % 366;
-  outputTotal = (squareNumber + startingDate) % 366;
-}
-
-for (i = 0; i < 12; i++){
-  if (outputTotal - maxDays[i] > 0) {
-    outputTotal = outputTotal - maxDays[i];
+  if (presentYear % 4 == 0){
+    leap = true;
   }
-  else break;
+  // maxDays holds maximum amount of days in every month, accounting for leap and non-leap years
+  var maxDays = new Array();
 
-}
+  if (leap){
+    maxDays[0] = 31;
+    maxDays[1] = 29;
+    maxDays[2] = 31;
+    maxDays[3] = 30;
+    maxDays[4] = 31;
+    maxDays[5] = 30;
+    maxDays[6] = 31;
+    maxDays[7] = 31;
+    maxDays[8] = 30;
+    maxDays[9] = 31;
+    maxDays[10] = 30;
+    maxDays[11] = 31;
+  }
+  else {
 
-outputMonth = i + 1;
+    maxDays[0] = 31;
+    maxDays[1] = 28;
+    maxDays[2] = 31;
+    maxDays[3] = 30;
+    maxDays[4] = 31;
+    maxDays[5] = 30;
+    maxDays[6] = 31;
+    maxDays[7] = 31;
+    maxDays[8] = 30;
+    maxDays[9] = 31;
+    maxDays[10] = 30;
+    maxDays[11] = 31;
+
+  }
+
+  // calculate number of days out of 365 the present date is
+  var presentTotal = 0;
+
+  for (j = 0; j < presentMonth; j++){
+    presentTotal = presentTotal + maxDays[j];
+  }
+  presentTotal = presentTotal + presentDay;
+
+
+  // calculate what the sampleTotalth day of the year is
+  var startingDate = (presentTotal - presentDayOfWeek + 365 + 6) - (7)*(52);
+
+  ////////////
+  // OUTPUT //
+  ////////////
+
+  var outputDay;
+  var outputMonth;
+  var outputYear;
+
+  ///////////////////
+  // END OF OUTPUT //
+  ///////////////////
+
+  var outputTotal;
+  if (leap) {
+    // outputTotal = (inputColumn * 7 + inputRow + startingDate) % 365;
+    outputTotal = (squareNumber + startingDate) % 365;
+
+  }
+  else {
+    //outputTotal = (inputColumn * 7 + inputRow + startingDate) % 366;
+    outputTotal = (squareNumber + startingDate) % 366;
+  }
+
+  for (i = 0; i < 12; i++){
+    if (outputTotal - maxDays[i] > 0) {
+      outputTotal = outputTotal - maxDays[i];
+    }
+    else break;
+
+  }
+
+  outputMonth = i + 1;
 
 
 
-if (outputTotal > 0) {
-  outputDay = outputTotal;
-}
+  if (outputTotal > 0) {
+    outputDay = outputTotal;
+  }
 
-if ((outputMonth >= presentMonth - 1) && (outputDay >= presentDay - 1)){
-  outputYear = presentYear - 1;
+  if ((outputMonth >= presentMonth - 1) && (outputDay >= presentDay - 1)){
+    outputYear = presentYear - 1;
 
-}
-else {
-  outputYear = presentYear;
-}
+  }
+  else {
+    outputYear = presentYear;
+  }
 
-// console.log("Month: " + outputMonth);
-// console.log("Day: " + outputDay);
-// console.log("Year: " + outputYear);
-returnedString = dateToPrettyString(outputDay, outputMonth, outputYear);
-//console.log("retunredString " + returnedString);
+  // console.log("Month: " + outputMonth);
+  // console.log("Day: " + outputDay);
+  // console.log("Year: " + outputYear);
+  returnedString = dateToPrettyString(outputDay, outputMonth, outputYear);
+  //console.log("retunredString " + returnedString);
   return returnedString;
 
 }
@@ -559,7 +581,7 @@ function dateToPrettyString(day, month, year){
   var storage = "";
   switch(month) {
     case 1: 
-      storage = storage + "Januray ";
+      storage = storage + "January ";
       break;
     case 2:
       storage = storage + "February ";
