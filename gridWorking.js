@@ -80,7 +80,10 @@ function color(id)
 }
 
 /*
- * 
+ * Used in clearing the grid, loading sample drawings, and of course,
+ * boss mode.
+ * Copies over the color from the box specified by id in the given array
+ * and updates the displayed grid.
  */
 function colorUpdate(id, array)
 {
@@ -92,7 +95,7 @@ function colorUpdate(id, array)
       case 0: 
       box.setAttribute("style", "fill: rgb(238, 238, 238);")
   
-  break;
+ break;
       case 1:
         box.setAttribute("style", "fill: rgb(214, 230, 133);");
 
@@ -113,7 +116,10 @@ function colorUpdate(id, array)
 
 }
 
-
+/*
+ * Fills the grid with all dark boxes. This mode is reserved for
+ * bosses. Inspired by Toby.
+ */
 function bossMode() {
   for (i = 0; i < boxColors.length; i++) {
     boxColors[i] = 4;
