@@ -1,12 +1,21 @@
-//it's temporarily 1D because of ids
-var boxes = new Array();
+/*
+ * Keep as a 1D array, 2D array isn't necessary.
+ * boxColors contains the current color for each box of the grid.
+ */
+var boxColors = new Array();
 
-function gridTable()
+/*
+ * Generates the HTML code which displays the grid.
+ * <svg> tag allows us to draw the rectangles.
+ */
+function generateGridTable()
 {
+    // String containing all the HTML to be displayed.
     var ret = "<svg id='calendar-graph' height='110' width='721'><g transform='translate(20, 20)'>";
     
-    //excuse the noob id approach, I'll fix it to smt that makes more sense later, too tired XD
-    //just wanted teh colors to appear
+    // Guess we're keeping this approach for now. Not ideal but it works.
+    // Create a <g> tag for each column in the grid, and a <rect> tag for
+    // each box in the grid.
     var idNum = 0;
     for(var i = 0; i <= 650 ; i += 13)
     {
@@ -15,7 +24,8 @@ function gridTable()
 	for(var j = 0; j <= 78; j += 13)
         {
 	    ret += "<rect id='" + idNum + "' onclick='color(" + idNum + ")' class='day' width='11' height='11' y='" + j + "' style='fill: rgb(238, 238, 238);'></rect>";
-	    boxes[idNum] = 0;
+	    // Set the color for each box and move to the next one.
+	    boxColors[idNum] = 0;
 	    idNum++;
 	}
         ret+="</g>";
@@ -24,49 +34,54 @@ function gridTable()
     return ret;
 }
 
-
-
+/*
+ * Main function which gets called in index.html and sets the inner HTML
+ * of the gridBody <div> tag. 
+ */
 function createGrid()
 {
     var obj = document.getElementById("gridBody");
-    obj.innerHTML = gridTable();
+    obj.innerHTML = generateGridTable();
 }
 
-
+/*
+ * Updates the color of the box with the given id. Called when
+ * a user clicks on a box.
+ */
 function color(id)
 {
     console.log(id);
-    //console.log("running color(" + id + ")");
     // Check the current colour and update to the next colour.
     var box = document.getElementById(id);
-    switch (boxes[id])
+    switch (boxColors[id])
     {
       case 0:	
 	box.setAttribute("style", "fill: rgb(214, 230, 133);");
-	boxes[id]++;
+	boxColors[id]++;
 	break;
       case 1:
 	box.setAttribute("style", "fill: rgb(140, 198, 101);")
-	boxes[id]++;
+	boxColors[id]++;
 	break;
       case 2:
 	box.setAttribute("style", "fill: rgb(68, 163, 64);")
-	boxes[id]++;
+	boxColors[id]++;
 	break;
       case 3:
 	box.setAttribute("style", "fill: rgb(30, 104, 35);")
-	boxes[id]++;
+	boxColors[id]++;
 	break;
       case 4:
 	box.setAttribute("style", "fill: rgb(238, 238, 238);")
-	boxes[id] = 0;
+	boxColors[id] = 0;
 	break;
     }
 
 }
 
-
-
+/*
+ * 
+ */
 function colorUpdate(id, array)
 {
     //console.log("running color(" + id + ")");
@@ -100,9 +115,9 @@ function colorUpdate(id, array)
 
 
 function bossMode() {
-  for (i = 0; i < boxes.length; i++) {
-    boxes[i] = 4;
-    colorUpdate(i, boxes);
+  for (i = 0; i < boxColors.length; i++) {
+    boxColors[i] = 4;
+    colorUpdate(i, boxColors);
   }
 }
 
@@ -110,7 +125,7 @@ function sendMail() {
     var link = "mailto:Your email here."
              + "?cc="
              + "&subject=" + escape("Commit Schedule")
-             + "&body=" + escape(generateDates(boxes));
+             + "&body=" + escape(generateDates(boxColors));
 
     window.location.href = link;
 }
@@ -122,7 +137,7 @@ var save1 = new Array;
 
 function save() {
 
-  //save1 = boxes;
+  //save1 = boxColors;
   for (i = 0; i < save1.length; i++){
     var box = document.getElementById(i);
     console.log(box.getAttribute("style"));
@@ -148,28 +163,30 @@ function save() {
 }
 
 /* 
- * The way it was before, boxes still had the previous numbers in it.
- * We need to reset boxes, because otherwise upon clicking inside the
- * previously drawn area, we jump to random colors.
+ * Clears the boxColors array, resetting the color
+ * of each box to 0 (empty box).
  */
-function cleargrid() {
-  for (i = 0; i < boxes.length; i++) {
-    boxes[i] = 0;
+function clearGrid() {
+  for (i = 0; i < boxColors.length; i++) {
+    boxColors[i] = 0;
   }
-  for (i = 0; i < boxes.length; i++) {
-    colorUpdate(i, boxes);
+  for (i = 0; i < boxColors.length; i++) {
+    colorUpdate(i, boxColors);
   }
 
 }
 
-  // moved this outside of load()
+/*
+ * Manually load some sample artwork while the save and
+ * load functions are in the making.
+ */
 function loadSample() {
 
-  for (i = 0; i < boxes.length; i++){
+  for (i = 0; i < boxColors.length; i++){
     save2[i] = 0;
   }
-  // since I won't have peresisting save done by wednesday, I painstakingly loaded a space invader so that
-  // we can show the load function, generateDate() and sample email
+  
+  // Manually load a space invader.
   save2[146] = 3;
   save2[153] = 3;
   save2[167] = 3;
@@ -336,54 +353,48 @@ for (i = 0; i < 48; i++) {
 }
 
 
-
-
 function load() {
   console.log("loading...");
   //dateToPrettyString(4, 10, 2014);
   //calculateDate(1);
 
-
-
   loadSample();
   generateDates(save2);
 
   // choose which file to load here
-  boxes = save2;
+  boxColors = save2;
 
-
-  for (i = 0; i < boxes.length; i++){
-      colorUpdate(i, boxes);
-      if (boxes[i] != 0){
-        console.log("filled " + i + " with color " + boxes[i]);
-    }
+  for (i = 0; i < boxColors.length; i++){
+      colorUpdate(i, boxColors);
+      if (boxColors[i] != 0){
+        console.log("filled " + i + " with color " + boxColors[i]);
+      }
   }
-
-
-
 }
 
-// generate dates corresponding to pattern, returns a string that we can email to the user
-
+/*
+ * Generate dates corresponding to pattern, returns a string that can be emailed to the user.
+ */
 function generateDates(array){
   console.log("inside generates");
 
   var dates = "";
 
   // I'm not sure how many commits it takes to achieve each shade of green so we'll change the numbers here
-  // when we find out for sure 
-
+  // when we find out for sure.
+  // It's weird but I think the number of commits for each color is different for each user :S
+  // Some ppl need 50 commits for dark green. That's gonna cause us problems...
 
   var num1 = 1; 
     // according to empirical data gathered by yours truly, it takes 4 commits to make it to the second shade of green
-  var num2 = 2;
-  var num3 = 6;
-  var num4 = 8;
+  var num2 = 4;
+  var num3 = 8;
+  var num4 = 12;
   
   // Loop to find the first colored box. This will allow users to start drawing their designs right away
   // instead of having to wait till august if they drew their figure too far to the right.
   var startingBlock = 0;
-  for (i = 0; i < boxes.length; i++) {
+  for (i = 0; i < boxColors.length; i++) {
       if (array[i] > 0) {
 	startingBlock = i;
 	break;
@@ -399,12 +410,12 @@ function generateDates(array){
 
   //console.log(calculateDate(355));
   var i = 0;
-  for (var i = startingBlock; i < boxes.length; i++) {
+  for (var i = startingBlock; i < boxColors.length; i++) {
     //var dateString = calculateDate(i);
     switch (array[i]) {
       case 1:
 	// Weird calculation, I know, was playing around with the dates, I'll get around to making this more clear.
-	// Basically i - startingBlock tells us how far from the first block the current block is, and we add
+	// Basically i-startingBlock tells us how far from the first block the current block is, and we add
 	// the offset % 7 to retain consistency with the current day of the week. Subtract 7 to start in the current
 	// week, if possible. today keeps track of whether today is the same day of the week as the first box to be
 	// drawn. If this is the case, we jump to the next week (so today's commits don't get in the way).
@@ -424,11 +435,7 @@ function generateDates(array){
   }
   console.log(dates);
   return dates;
-
 }
-
-
-
 
 
 //////////////////////////////
@@ -444,13 +451,13 @@ var presentMonth = d.getMonth();;
 var presentYear = d.getFullYear();
 
 ///////////
-// INPUT //c
+// INPUT //
 ///////////
 
 var inputRow = 0; // between 0 and 6 inclusive
 var inputColumn = 0; // between 0 and 52 inclusive
 
-var squareNumber = 365;
+var boxNumber = 365;
 
 //////////////////
 // END OF INPUT //
@@ -462,13 +469,16 @@ var squareNumber = 365;
 
 inputColumn++; // add 1 to offset incomplete column at the beginning
 
-/* leap years occur on years that are divisile by 4 (with some exceptions
- * but those happend once every century or so so we'll ignore them for now) */
-
+/* 
+ * Calculates the date associated with the specific box id and returns thei
+ * corresponding String.
+ * Leap years occur on years that are divisile by 4 (with some exceptions
+ * but those happend once every century or so so we'll ignore them for now).
+ */
 function calculateDate(number) {
 
-  squareNumber = number;
-  //console.log("Square #" + squareNumber + " corresponds to: ")
+  boxNumber = number;
+  //console.log("Box #" + boxNumber + " corresponds to: ")
 
   var leap = false;
 
@@ -536,12 +546,12 @@ function calculateDate(number) {
   var outputTotal;
   if (leap) {
     // outputTotal = (inputColumn * 7 + inputRow + startingDate) % 365;
-    outputTotal = (squareNumber + startingDate) % 365;
+    outputTotal = (boxNumber + startingDate) % 365;
 
   }
   else {
     //outputTotal = (inputColumn * 7 + inputRow + startingDate) % 366;
-    outputTotal = (squareNumber + startingDate) % 366;
+    outputTotal = (boxNumber + startingDate) % 366;
   }
 
   for (i = 0; i < 12; i++){
