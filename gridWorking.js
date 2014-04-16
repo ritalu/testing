@@ -141,28 +141,25 @@ var save2 = new Array;
 
 var save1 = new Array;
 
-function save() {
+function initializeSave1() {
+  for (i = 0; i < boxColors.length; i++) {
+    save1[i] = 0;
+  }
 
+
+}
+
+/* works rudimentarily: will work perfectly when you first use it after you refresh a page, then it starts 
+ * acting weird after clicking boss mode. Will fix later*/
+
+function save() {
+  // this puts 0's where we don't want other numbers
+  initializeSave1();
   //save1 = boxColors;
   for (i = 0; i < save1.length; i++){
-    var box = document.getElementById(i);
-    console.log(box.getAttribute("style"));
-    // if (box.getAttribute("style") == "\"fill: rgb(238, 238, 238);\"") {
-    //   save1[i] = 0;
-    // }
-    // else if (box.getAttribute("style") == "\"fill: rgb(214, 230, 133);\"") {
-    //   save1[i] = 1;
-    // }
-    // else if (box.getAttribute("style") == "\"fill: rgb(140, 198, 101);\"") {
-    //   save1[i] = 2;
-    // }
-    // else if (box.getAttribute("style") == "\"fill: rgb(68, 163, 64);\"") {
-    //   save1[i] = 3;
-    // }
-    // else if (box.getAttribute("style") == "\"fill: rgb(30, 104, 35);\"") {
-    //   save1[i] = 4;
-    // }
-    // console.log(save1[i]);
+  //  console.log("Box colors: " + boxColors[i]);
+    save1[i] = boxColors[i];
+
 
   }
 
@@ -368,12 +365,12 @@ function load() {
   generateDates(save2);
 
   // choose which file to load here
-  boxColors = save2;
+  boxColors = save1;
 
   for (i = 0; i < boxColors.length; i++){
       colorUpdate(i, boxColors);
       if (boxColors[i] != 0){
-        console.log("filled " + i + " with color " + boxColors[i]);
+        //console.log("filled " + i + " with color " + boxColors[i]);
       }
   }
 }
@@ -390,6 +387,7 @@ function generateDates(array){
   // when we find out for sure.
   // It's weird but I think the number of commits for each color is different for each user :S
   // Some ppl need 50 commits for dark green. That's gonna cause us problems...
+  // oh whaat that is really odd. I'll google to see if anyone tried to find a pattern
 
   var num1 = 1; 
     // according to empirical data gathered by yours truly, it takes 4 commits to make it to the second shade of green
