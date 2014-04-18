@@ -76,7 +76,6 @@ function color(id)
 	boxColors[id] = 0;
 	break;
     }
-
 }
 
 /*
@@ -131,7 +130,7 @@ function sendMail() {
     var link = "mailto:Your email here."
              + "?cc="
              + "&subject=" + escape("Commit Schedule")
-             + "&body=" + escape(generateDates(boxColors));
+             + "&body=" + escape(generateDateString(boxColors));
 
     window.location.href = link;
 }
@@ -145,8 +144,6 @@ function initializeSave1() {
   for (i = 0; i < boxColors.length; i++) {
     save1[i] = 0;
   }
-
-
 }
 
 /* works rudimentarily: will work perfectly when you first use it after you refresh a page, then it starts 
@@ -362,15 +359,15 @@ function load() {
   //calculateDate(1);
 
   loadSample();
-  generateDates(save2);
+  generateDateString(save2);
 
   // choose which file to load here
-  boxColors = save1;
+  boxColors = save2;
 
   for (i = 0; i < boxColors.length; i++){
       colorUpdate(i, boxColors);
       if (boxColors[i] != 0){
-        //console.log("filled " + i + " with color " + boxColors[i]);
+        console.log("filled " + i + " with color " + boxColors[i]);
       }
   }
 }
@@ -378,8 +375,8 @@ function load() {
 /*
  * Generate dates corresponding to pattern, returns a string that can be emailed to the user.
  */
-function generateDates(array){
-  console.log("inside generates");
+function generateDateString(array){
+  console.log("inside generateDateString");
 
   var dates = "";
 
@@ -388,6 +385,13 @@ function generateDates(array){
   // It's weird but I think the number of commits for each color is different for each user :S
   // Some ppl need 50 commits for dark green. That's gonna cause us problems...
   // oh whaat that is really odd. I'll google to see if anyone tried to find a pattern
+  // Update:
+  // How it works is your whole commit history adjusts based on your largest contribution.
+  // So if your max # of commits ever was 50, then the darkest green appears only for 50 commits.
+  // There are different levels for this, we gotta investigate. So far I know there's: 8, 12, ..., 50, ..., 100
+  // We gotta be careful cuz if I commit 50 times tomorrow, basically all my history will become light green.
+  // This is problematic for us, but not the end of the world. If ppl stick to the formula and don't commit
+  // a lot more than they have to, we good.
 
   var num1 = 1; 
     // according to empirical data gathered by yours truly, it takes 4 commits to make it to the second shade of green
@@ -401,7 +405,16 @@ function generateDates(array){
   for (i = 0; i < boxColors.length; i++) {
       if (array[i] > 0) {
 	startingBlock = i;
+	console.log("startingBlock chosen");
 	break;
+      }
+      
+      /*
+       * If we reach this point, the grid is empty.
+       */
+      if (i == boxColors.length-1) {
+	console.log("empty grid");
+	return "The grid is empty, go draw something!";
       }
   }
   
