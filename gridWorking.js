@@ -1,5 +1,5 @@
 /*
- * Kkkkkeep as a 1D array, 2D array isn't necessary.
+ * Keep as a 1D array, 2D array isn't necessary.
  * boxColors contains the current color for each box of the grid.
  */
 var boxColors = new Array();
