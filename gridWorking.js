@@ -92,27 +92,21 @@ function colorUpdate(id, array)
     switch (array[id])
     {
       case 0: 
-      box.setAttribute("style", "fill: rgb(238, 238, 238);")
-  
- break;
+	box.setAttribute("style", "fill: rgb(238, 238, 238);")
+	break;
       case 1:
         box.setAttribute("style", "fill: rgb(214, 230, 133);");
-
-  break;
+	break;
       case 2:
         box.setAttribute("style", "fill: rgb(140, 198, 101);")
-
-  break;
+	break;
       case 3:
         box.setAttribute("style", "fill: rgb(68, 163, 64);")
-
-  break;
+	break;
       case 4:
-        box.setAttribute("style", "fill: rgb(30, 104, 35);")
-  
-  break;
+        box.setAttribute("style", "fill: rgb(30, 104, 35);")  
+	break;
     }
-
 }
 
 /*
@@ -126,6 +120,10 @@ function bossMode() {
   }
 }
 
+/*
+ * Opens up an email dialog so the user can send themselves an
+ * email with the commit schedule. Not ideal - temporary solution.
+ */
 function sendMail() {
     var link = "mailto:Your email here."
              + "?cc="
