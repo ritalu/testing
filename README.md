@@ -1,9 +1,7 @@
-Gridhub - customize your github commit history!
-Coded by some McGill kids.
+GridHub - customize your GitHub commit history!
 
-[Latest release] (http://reetah.github.io/gitgrid/)
 <a href="http://reetah.github.io/gitgrid/" target="_blank">Latest release</a> 
 
-[Development version] (http://reetah.github.io/)
+<a href="http://reetah.github.io" target="_blank">Development version</a> 
 
-![Alt text](/gridhub.png "Gridhub")
+[Alt text](/gridhub.png "Gridhub")
