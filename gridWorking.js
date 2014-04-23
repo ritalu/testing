@@ -111,7 +111,7 @@ function colorUpdate(id, array)
 
 /*
  * Fills the grid with all dark boxes. This mode is reserved for
- * bosses. Inspired by Toby.
+ * bosses. Inspired by Toby the one and only.
  */
 function bossMode() {
   for (i = 0; i < boxColors.length; i++) {
@@ -350,7 +350,9 @@ for (i = 0; i < 48; i++) {
   pokeball[i] = save2[i + 14];
 }
 
-
+/*
+ * Loads the sample designs into the grid.
+ */
 function load() {
   console.log("loading...");
   //dateToPrettyString(4, 10, 2014);
@@ -602,6 +604,10 @@ function calculateDate(number) {
 
 }
 
+/*
+ * Converts the given day, month, and year
+ * numerical values into an easy-to-read date.
+ */
 function dateToPrettyString(day, month, year){
   var storage = "";
   switch(month) {
