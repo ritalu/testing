@@ -167,11 +167,8 @@ function save() {
 function clearGrid() {
   for (i = 0; i < boxColors.length; i++) {
     boxColors[i] = 0;
-  }
-  for (i = 0; i < boxColors.length; i++) {
     colorUpdate(i, boxColors);
   }
-
 }
 
 /*
