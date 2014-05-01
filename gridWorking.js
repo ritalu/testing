@@ -13,9 +13,10 @@ function generateGridTable()
     // String containing all the HTML to be displayed.
     var ret = "<svg id='calendar-graph' height='110' width='721'><g transform='translate(20, 20)'>";
     
-    // Guess we're keeping this approach for now. Not ideal but it works.
-    // Create a <g> tag for each column in the grid, and a <rect> tag for
-    // each box in the grid.
+    /*
+     * Create a <g> tag for each column in the grid, and a <rect> tag for
+     * each box in the grid.
+     */
     var idNum = 0;
     for(var i = 0; i <= 650 ; i += 13)
     {
