@@ -151,7 +151,7 @@ function initializeSave1() {
 function save() {
   // this puts 0's where we don't want other numbers
   initializeSave1();
-  //save1 = boxColors;
+
   for (i = 0; i < save1.length; i++){
   //  console.log("Box colors: " + boxColors[i]);
     save1[i] = boxColors[i];
@@ -349,18 +349,18 @@ for (i = 0; i < 48; i++) {
 }
 
 /*
- * Loads the sample designs into the grid.
+ * Loads the saved design onto the grid
  */
 function load() {
   console.log("loading...");
   //dateToPrettyString(4, 10, 2014);
   //calculateDate(1);
 
-  loadSample();
-  generateDateString(save2);
+  //loadSample();
+  generateDateString(save1);
 
   // choose which file to load here
-  boxColors = save2;
+  boxColors = save1;
 
   for (i = 0; i < boxColors.length; i++){
       colorUpdate(i, boxColors);
