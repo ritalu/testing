@@ -4,6 +4,13 @@
  */
 var boxColors = new Array();
 
+
+// sample grid to load
+var save2 = new Array;
+
+var save1 = new Array;
+
+
 /*
  * Generates the HTML code which displays the grid.
  * <svg> tag allows us to draw the rectangles.
@@ -134,10 +141,7 @@ function sendMail() {
     window.location.href = link;
 }
 
-// sample grid to load
-var save2 = new Array;
 
-var save1 = new Array;
 
 function initializeSave1() {
   for (i = 0; i < boxColors.length; i++) {
@@ -328,6 +332,16 @@ function loadSample() {
   save2[320] = 4;
   save2[326] = 1;
   
+
+  boxColors = save2;
+
+  for (i = 0; i < boxColors.length; i++){
+      colorUpdate(i, boxColors);
+      if (boxColors[i] != 0){
+        console.log("filled " + i + " with color " + boxColors[i]);
+      }
+  }
+
 }
 
 // saved patterns: move this outside the load function later
