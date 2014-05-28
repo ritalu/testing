@@ -38,6 +38,18 @@ def _send_email(self, from_addr, to_addr, smtp_obj, email_content):
     return smtp_obj.quit()
 
 
+def _load_json_obj(json_file_path):
+    """ Load from the given json file using the json loads() function.
+        Print error message for improperly formatted json string.
+        We'll use this function to potentially load a saved gridhub
+        drawing (persisance in json).
+    """
+    decoded_json_obj = None
+    with open(json_file_path, 'rb') as fp:
+        decoded_json_obj = json.load(fp)
+    return decoded_json_obj
+
+
 def _main():
     to_addr, from_addr, smtp_server = "vonatarbi@gmail.com", "vonatarbi@gmail.com", "smtp.gmail.com"
     email_msg = "test"
