@@ -149,8 +149,7 @@ function initializeSave1() {
   }
 }
 
-/* works rudimentarily: will work perfectly when you first use it after you refresh a page, then it starts 
- * acting weird after clicking boss mode. Will fix later*/
+
 
 function save() {
   // this puts 0's where we don't want other numbers
