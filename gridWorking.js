@@ -141,8 +141,20 @@ function sendMail() {
     window.location.href = link;
 }
 
+/* 
+ * Allows users to create multiple saves
+ */
 
-
+var fieldsCount = 0;
+function populateSaveFields() {
+  var fields = document.getElementById("savedFiles");
+  console.log(fields)
+  fieldsCount++;
+  var saveName = "Save Slot ".concat(fieldsCount.toString());
+  var o = document.createElement("option");
+  o.text = saveName;
+  fields.add(o, fields[fieldsCount]);
+}
 function initializeSave1() {
   for (i = 0; i < boxColors.length; i++) {
     save1[i] = 0;
