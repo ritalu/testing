@@ -7,7 +7,6 @@ var boxColors = new Array();
 
 // sample grid to load
 var save2 = new Array;
-
 var save1 = new Array;
 
 
