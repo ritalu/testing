@@ -155,6 +155,13 @@ function populateSaveFields() {
   fields.add(o, fields[fieldsCount]);
 }
 
+// allows users to delete saves
+function deleteSave(){
+  var fields = document.getElementById("savedFiles");
+  console.log(fields.value);
+  fields.remove(fields.selectedIndex);
+
+}
 
 function initializeSave1() {
   for (i = 0; i < boxColors.length; i++) {
