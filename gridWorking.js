@@ -143,7 +143,6 @@ function sendMail() {
 /* 
  * Allows users to create multiple saves
  */
-
 var fieldsCount = 0;
 function populateSaveFields() {
   var fields = document.getElementById("savedFiles");
