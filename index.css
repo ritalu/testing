@@ -1,0 +1,51 @@
+h1 {
+    letter-spacing: 0.5em;
+    line-height: 1.5;
+    text-align: center;
+    font-family: "Lucida Console";
+    font-size: 60px;
+    color: white;
+    font-weight: lighter;
+}
+
+h2 {
+
+    font-family: "Lucida Console";
+    font-size: 30px;
+    color: white;
+    font-weight: lighter;
+
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+
+   padding:10px;
+}
+#body {
+   padding:10px;
+   padding-bottom:60px;   /* Height of the footer */
+}
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+
+}
+
+body {
+	font-size: 15px;
+	font-family: "Lucida Console";
+	color: white;
+	margin:0;
+   	padding:0;
+   	height:100%;
+}
+
+a:link {color: #000000;  }
+a:active {color: #000000;  }
+a:visited {color: #009E8E; }
+a:hover {color: #5DCFC3;  }

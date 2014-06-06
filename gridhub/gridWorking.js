@@ -1,4 +1,4 @@
-/**
+/*
  * keep as a 1D array, 2D array isn't necessary.
  * boxColors contains the current color for each box of the grid.
  */
@@ -7,7 +7,6 @@ var boxColors = new Array();
 
 // sample grid to load
 var save2 = new Array;
-
 var save1 = new Array;
 
 
@@ -144,17 +143,25 @@ function sendMail() {
 /* 
  * Allows users to create multiple saves
  */
-
 var fieldsCount = 0;
 function populateSaveFields() {
   var fields = document.getElementById("savedFiles");
-  console.log(fields)
   fieldsCount++;
   var saveName = "Save Slot ".concat(fieldsCount.toString());
   var o = document.createElement("option");
   o.text = saveName;
+  o.id = "save".concat(fieldsCount);
   fields.add(o, fields[fieldsCount]);
 }
+
+// allows users to delete saves
+function deleteSave(){
+  var fields = document.getElementById("savedFiles");
+  console.log(fields.value);
+  fields.remove(fields.selectedIndex);
+
+}
+
 function initializeSave1() {
   for (i = 0; i < boxColors.length; i++) {
     save1[i] = 0;
