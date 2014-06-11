@@ -41,6 +41,16 @@ function generateGridTable()
     return ret;
 }
 
+// 2d array that holds all the saves
+var saves;
+
+function initializeSaves(){
+   saves = new Array(10);
+  for (i = 0; i < 10; i++){
+  saves[i] = new Array(365);
+}
+
+}
 /*
  * Main function which gets called in index.html and sets the inner HTML
  * of the gridBody <div> tag. 
@@ -140,6 +150,7 @@ function sendMail() {
     window.location.href = link;
 }
 
+
 /* 
  * Allows users to create multiple saves
  */
@@ -152,6 +163,7 @@ function populateSaveFields() {
   o.text = saveName;
   o.id = "save".concat(fieldsCount);
   fields.add(o, fields[fieldsCount]);
+  save(fieldsCount);
 }
 
 // allows users to delete saves
@@ -162,21 +174,21 @@ function deleteSave(){
 
 }
 
-function initializeSave1() {
-  for (i = 0; i < boxColors.length; i++) {
-    save1[i] = 0;
+function initializeSave(i) {
+  for (j = 0; j < boxColors.length; j++) {
+    save1[i][j] = 0;
   }
 }
 
 
 
-function save() {
+function save(i) {
   // this puts 0's where we don't want other numbers
-  initializeSave1();
+  initializeSave(i);
 
-  for (i = 0; i < save1.length; i++){
+  for (j = 0; j < save1.length; j++){
   //  console.log("Box colors: " + boxColors[i]);
-    save1[i] = boxColors[i];
+    save[i][j] = boxColors[j];
 
 
   }
