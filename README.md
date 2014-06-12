@@ -4,4 +4,4 @@ GridHub - customize your GitHub commit history!
 
 <a href="http://reetah.github.io" target="_blank">Development version</a> 
 
-![Alt text](/gridhub.png "Gridhub")
+![Alt text](/gridhub/gridhub.png "Gridhub")
