@@ -1,6 +1,7 @@
-reetah.github.io
-================
+GridHub - customize your GitHub commit history!
 
-Home of GitGrid
+<a href="http://reetah.github.io/gitgrid/" target="_blank">Latest release</a> 
 
-Where is my README? <a href='http://cdn.memegenerator.net/instances/43404175.jpg'>T-T</a>
+<a href="http://reetah.github.io" target="_blank">Development version</a> 
+
+![Alt text](/gridhub.png "Gridhub")
