@@ -47,10 +47,11 @@ var saves;
 function initializeSaves(){
    saves = new Array(10);
   for (i = 0; i < 10; i++){
-  saves[i] = new Array(365);
+    saves[i] = new Array(365);
+
+    }
 }
 
-}
 /*
  * Main function which gets called in index.html and sets the inner HTML
  * of the gridBody <div> tag. 
@@ -59,6 +60,7 @@ function createGrid()
 {
     var obj = document.getElementById("gridBody");
     obj.innerHTML = generateGridTable();
+    initializeSaves();
 }
 
 /*
@@ -176,7 +178,7 @@ function deleteSave(){
 
 function initializeSave(i) {
   for (j = 0; j < boxColors.length; j++) {
-    save1[i][j] = 0;
+    saves[i][j] = 0;
   }
 }
 
@@ -189,8 +191,6 @@ function save(i) {
   for (j = 0; j < save1.length; j++){
   //  console.log("Box colors: " + boxColors[i]);
     save[i][j] = boxColors[j];
-
-
   }
 
 }
