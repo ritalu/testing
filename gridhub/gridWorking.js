@@ -166,6 +166,10 @@ function populateSaveFields() {
   o.id = "save".concat(fieldsCount);
   fields.add(o, fields[fieldsCount]);
   save(fieldsCount);
+  /*
+   * To persist saves we might need to move our site to somewhere which supports
+   * server-side work. I read up on persisting JS to JSON and it's not easy to do,
+   * with good reason! No chance to implement anything yet time to ZZZ.
 }
 
 // allows users to delete saves
