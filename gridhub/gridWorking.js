@@ -60,7 +60,7 @@ function createGrid()
 {
     var obj = document.getElementById("gridBody");
     obj.innerHTML = generateGridTable();
-    initializeSaves();
+//    initializeSaves();
 }
 
 /*
