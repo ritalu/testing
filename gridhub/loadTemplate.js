@@ -171,7 +171,7 @@ function loadSample() {
   for (i = 0; i < boxColors.length; i++){
       colorUpdate(i, boxColors);
       if (boxColors[i] != 0){
-        console.log("filled " + i + " with color " + boxColors[i]);
+        //console.log("filled " + i + " with color " + boxColors[i]);
       }
   }
 

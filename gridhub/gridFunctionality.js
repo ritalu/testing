@@ -30,7 +30,7 @@ function generateGridTable()
         
 	for(var j = 0; j <= 78; j += 13)
         {
-	    ret += "<rect id='" + idNum + "' onclick='color(" + idNum + ")' class='day' width='11' height='11' y='" + j + "' style='fill: rgb(238, 238, 238);'></rect>";
+	    ret += "<rect id='" + idNum + "' onclick='colorBoxOnClick(" + idNum + ")' class='day' width='11' height='11' y='" + j + "' style='fill: rgb(238, 238, 238);'></rect>";
 	    // Set the color for each box and move to the next one.
 	    boxColors[idNum] = 0;
 	    idNum++;
@@ -39,17 +39,6 @@ function generateGridTable()
     }
     ret += "</g></svg>";
     return ret;
-}
-
-// 2d array that holds all the saves
-var saves;
-
-function initializeSaves(){
-   saves = new Array(10);
-  for (i = 0; i < 10; i++){
-    saves[i] = new Array(365);
-
-    }
 }
 
 /*
@@ -67,10 +56,10 @@ function createGrid()
  * Updates the color of the box with the given id. Called when
  * a user clicks on a box.
  */
-function color(id)
+function colorBoxOnClick(id)
 {
     console.log(id);
-    // Check the current colour and update to the next colour.
+    // Check the current color and update to the next color.
     var box = document.getElementById(id);
     switch (boxColors[id])
     {
@@ -140,56 +129,6 @@ function sendMail() {
 
     window.location.href = link;
 }
-
-
-/* 
- * Allows users to create multiple saves
- */
-var fieldsCount = 0;
-function populateSaveFields() {
-  var fields = document.getElementById("savedFiles");
-  fieldsCount++;
-  var saveName = "Save Slot ".concat(fieldsCount.toString());
-  var o = document.createElement("option");
-  o.text = saveName;
-  o.id = "save".concat(fieldsCount);
-  fields.add(o, fields[fieldsCount]);
-  save(fieldsCount);
-}
-  /*
-   * To persist saves we might need to move our site to somewhere which supports
-   * server-side work. I read up on persisting JS to JSON and it's not easy to do,
-   * with good reason! No chance to implement anything yet time to ZZZ.
-   */
-
-
-// allows users to delete saves
-function deleteSave(){
-  var fields = document.getElementById("savedFiles");
-  console.log(fields.value);
-  fields.remove(fields.selectedIndex);
-
-}
-
-function initializeSave(i) {
-  for (j = 0; j < boxColors.length; j++) {
-    saves[i][j] = 0;
-  }
-}
-
-
-
-function save(i) {
-  // this puts 0's where we don't want other numbers
-  initializeSave(i);
-
-  for (j = 0; j < save1.length; j++){
-  //  console.log("Box colors: " + boxColors[i]);
-    save[i][j] = boxColors[j];
-  }
-
-}
-
 
 /* 
  * Clears the boxColors array, resetting the color
