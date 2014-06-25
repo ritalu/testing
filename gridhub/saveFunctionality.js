@@ -1,13 +1,21 @@
 // 2d array that holds all the saves
 var saves;
 
-function initializeSaves(){
-  saves = new Array(10);
-  for (i = 0; i < 10; i++){
-    saves[i] = new Array(365);
-	// Load saves from file here...
-    }
+/*
+ * I think we need to initialize saves outside
+ * of a function otherwise we get an error
+ * when populateSaveFields() is called.
+ * What do you think? This is something you
+ * started tho so proceed as you see fit, I'm
+ * just trying to see what's causing the bugs XD
+ */
+//function initializeSaves(){
+saves = new Array(10);
+for (i = 0; i < 10; i++){
+  saves[i] = new Array(365);
+  // Load saves from file here...
 }
+//}
 
 /* 
  * Allows users to create multiple saves
