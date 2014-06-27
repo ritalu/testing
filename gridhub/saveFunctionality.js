@@ -9,7 +9,7 @@ var saves;
  * started tho so proceed as you see fit, I'm
  * just trying to see what's causing the bugs XD
  */
-//function initializeSaves(){
+function initializeSaves(){
 saves = new Array(10);
 for (i = 0; i < 10; i++){
   saves[i] = new Array(365);
