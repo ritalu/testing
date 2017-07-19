@@ -51,7 +51,7 @@ def _load_json_obj(json_file_path):
 
 
 def _main():
-    to_addr, from_addr, smtp_server = "vonatarbi@gmail.com", "vonatarbi@gmail.com", "smtp.gmail.com"
+    to_addr, from_addr, smtp_server = "temp@gmail.com", "temp@gmail.com", "smtp.gmail.com"
     email_msg = "test"
     try:
         smtp_connection = smtplib.SMTP(smtp_server, 587) # 25, None, 5)
